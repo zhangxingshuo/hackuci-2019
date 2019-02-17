@@ -124,17 +124,17 @@ def fit_smile(img, corners, show=False):
 
     return coeffs[0]
 
-def determine_smile(image_name):
+def determine_smile(image_name, show=False):
     img = cv.imread(image_name)
-    mouth = find_mouth(img)
+    mouth = find_mouth(img, show=show)
     if mouth is None:
         return None
-    mouth_img, corners = detect_corners(img, mouth)
+    mouth_img, corners = detect_corners(img, mouth, show=show)
     if mouth_img is None or corners is None:
         return None
-    return fit_smile(mouth_img, corners)
+    return fit_smile(mouth_img, corners, show=show)
 
-def find_eye_ratio(image_name):
+def find_eye_ratio(image_name, show=False):
     img = cv.imread(image_name)
     gray = cv.cvtColor(img, cv.COLOR_BGR2GRAY)
     eye_cascade = cv.CascadeClassifier('haarcascade_eye.xml')
@@ -153,6 +153,9 @@ def find_eye_ratio(image_name):
         cv.rectangle(copy,(x,y),(x+w,y+h),(255,0,0),2)
         roi_gray = gray[y:y+h, x:x+w]
         roi_color = copy[y:y+h, x:x+w]
+
+    if show:
+        cv.imshow('img', copy)
 
     eye_ratio_sum = 0
     count = 0
