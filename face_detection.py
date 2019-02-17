@@ -144,7 +144,7 @@ def find_eye_ratio(image_name):
 
     if len(faces) < 1:
         print("No faces found :(")
-        return None
+        return 0
 
     face_area = faces[0][2] * faces[0][3]
 
