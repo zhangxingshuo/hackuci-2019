@@ -1,0 +1,11 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: column wrap;
+    justify-content: space-around;
+}
+
+.child {
+	padding: 20px;
+	margin: auto;
+}

@@ -1,13 +1,27 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <title>Upload new File</title>
-    <h1>Upload new File</h1>
-    <form method=post enctype=multipart/form-data>
+
+ <link rel="stylesheet" href="{{ url_for('static',    filename='css/home.css') }}">
+  <title>Upload new File</title>
+
+  <div class='container'>
+    <div class='child'>
+      <h1>Upload Your Photos</h1>
+    </div>
+
+    <div class='child'>
+      <form method=post enctype=multipart/form-data>
       <input type=file name=file>
       <input type=submit value=Upload name=action>
-    </form>
-    <form method=post enctype=multipart/form-data>
-    <input type="submit" name="action" value="Submit">
-    </form>
+      </form>
+    </div>
+
+    <div class='child'>
+      <form method=post enctype=multipart/form-data>
+        <input type="submit" name="action" value="Submit">
+      </form>
+    </div>
+
+
+  </div>
 </html>

@@ -58,16 +58,17 @@ def calculate_result():
     max_filename = ''
     print('CALCULATE')
     for filename in os.listdir(app.config['UPLOAD_FOLDER']):
-        
+        if filename == '.DS_Store':
+            continue
         abs_filename = os.path.abspath(app.config['UPLOAD_FOLDER'] + filename)
-        print (filename)
         smile = determine_smile(abs_filename)
         eye_ratio = find_eye_ratio(abs_filename)
+        print(filename)
         curr_sum = abs(smile) + eye_ratio
+        print(str(curr_sum))
         if curr_sum > max_sum:
             max_sum = curr_sum
             max_filename = filename
-    print (max_filename)
     return redirect(url_for('show_result', filename=max_filename))
 
 @app.route('/show/<filename>', methods=['GET','POST'])
